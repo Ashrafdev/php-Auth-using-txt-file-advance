@@ -7,7 +7,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $login = new Login();
     $login->login();
-//    $login->get_txt();
     die;
 }
 ?>
