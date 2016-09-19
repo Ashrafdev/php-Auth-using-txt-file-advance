@@ -34,10 +34,7 @@ class Login
     public function logout()
     {
         session_start();
-        unset($_SESSION['username']);
-        unset($_SESSION['password']);
-        unset($_SESSION['is_auth']);
-
+        session_unset();
         header("Location: login.php");
         die();
     }
@@ -53,7 +50,7 @@ class Login
             $this->u = @(strtolower($row_user[0]));
             $this->p = @trim(strtolower($row_user[1]), "\r");
 
-            if ($this->u == $this->username && $this->p == $this->password) {
+            if (strcmp($this->u, $this->username) === 0 && strcmp($this->p, $this->password) === 0) {
                 return true;
             }
         }

@@ -4,10 +4,7 @@ logout();
 function logout()
 {
     session_start();
-    unset($_SESSION['username']);
-    unset($_SESSION['password']);
-    unset($_SESSION['is_auth']);
-
+    session_unset();
     header("Location: login.php");
     die();
 }

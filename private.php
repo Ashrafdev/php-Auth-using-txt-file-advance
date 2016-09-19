@@ -1,5 +1,13 @@
 <?php
+require_once 'includes.php';
+
 session_start();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $login = (new Login())->logout();
+    die;
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,7 +27,10 @@ session_start();
             die;
         else:
             $r = '<b>' . 'Welcome ' . $_SESSION['username'] . ' to Dasboard </b>';
-            $r .= '<a href="logout.php">Click here for logout</a>';
+            $r .= '
+        <form action='. $_SERVER['PHP_SELF'] .' method="post" accept-charset="utf-8">
+            <input type="submit" value="Click here for logout">
+        </form>';
             echo $r;
         endif;
         ?>

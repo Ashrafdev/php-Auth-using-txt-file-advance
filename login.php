@@ -5,8 +5,7 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $login = new Login();
-    $login->login();
+    $login = (new Login())->login();
     die;
 }
 ?>
